@@ -11,10 +11,14 @@ class Calculator {
     private final String[] values = {"", "I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"};
     HashMap<String, Integer> nums = new HashMap<>();
 
-    public Calculator() {
+    public Calculator() throws Exception {
         for (int i = 0; i < this.counts.length; i++) {
             nums.put(values[i], counts[i]);
         }
+        private void checkerFromOneToTen(String[] strings) throws Exception {
+            if (Integer.parseInt(strings[0]) > 10 && Integer.parseInt(strings[0]) < 1 && Integer.parseInt(strings[2]) > 10 && Integer.parseInt(strings[2]) < 1) {
+                throw new Exception("Incorrect number");
+            }
     }
 
     /**
@@ -35,15 +39,20 @@ class Calculator {
             isArabic = false;
             this.changeToArabic(expression);
         }
+        checkerFromOneToTen(expression);
+        }
         if (this.checkArray(expression)) {
             result = this.doWork(expression);
             if (!isArabic) {
                 result = this.changeToRoman(result);
             }
         } else {
-            throw new Exception("The expression is incorrect");
+            throw new Exception ("The expression is incorrect");
         }
         return result;
+    }
+
+    private void checkerFromOneToTen(String[] expression) {
     }
 
     /**
