@@ -3,7 +3,16 @@ package org.example;
 import java.util.Scanner;
 
 public class Main {
-    static Calculator calculator = new Calculator();
+    static Calculator calculator;
+
+    static {
+        try {
+            calculator = new Calculator();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     static boolean isWork = true;
 
     /**

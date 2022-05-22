@@ -1,6 +1,7 @@
 package org.example;
 
 import java.math.BigInteger;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -15,10 +16,6 @@ class Calculator {
         for (int i = 0; i < this.counts.length; i++) {
             nums.put(values[i], counts[i]);
         }
-        private void checkerFromOneToTen(String[] strings) throws Exception {
-            if (Integer.parseInt(strings[0]) > 10 && Integer.parseInt(strings[0]) < 1 && Integer.parseInt(strings[2]) > 10 && Integer.parseInt(strings[2]) < 1) {
-                throw new Exception("Incorrect number");
-            }
     }
 
     /**
@@ -40,19 +37,21 @@ class Calculator {
             this.changeToArabic(expression);
         }
         checkerFromOneToTen(expression);
-        }
         if (this.checkArray(expression)) {
             result = this.doWork(expression);
             if (!isArabic) {
                 result = this.changeToRoman(result);
             }
         } else {
-            throw new Exception ("The expression is incorrect");
+            throw new Exception("The expression is incorrect");
         }
         return result;
     }
 
-    private void checkerFromOneToTen(String[] expression) {
+    private void checkerFromOneToTen(String[] strings) throws Exception {
+        if (Integer.parseInt(strings[0]) > 10 || Integer.parseInt(strings[0]) < 1 || Integer.parseInt(strings[2]) > 10 || Integer.parseInt(strings[2]) < 1) {
+            throw new Exception("Incorrect number");
+        }
     }
 
     /**
@@ -97,7 +96,7 @@ class Calculator {
     /**
      * Method for check and put (if it is necessary) the whitespace
      *
-     * @param list     is a list of values
+     * @param list is a list of values
      * @param answered is number of position for check
      */
     private void addWhiteSpace(ArrayList<String> list, int answered) {
@@ -118,7 +117,8 @@ class Calculator {
         }
         StringBuilder semiresult = new StringBuilder();
         int count = Integer.parseInt(result);
-        for (int i = counts.length - 1; i > 0; i--) {
+        for (int i = counts.length - 1; i
+                > 0; i--) {
             while (count >= counts[i]) {
                 semiresult.append(values[i]);
                 count -= counts[i];
@@ -127,12 +127,12 @@ class Calculator {
         return semiresult.toString();
     }
 
-    /**
-     * Main method of calculating
-     *
-     * @param expression is a 3-parted string with two numbers and one expression
-     * @return result of calculating
-     */
+/**
+ * Main method of calculating
+ *
+ * @param expression is a 3-parted string with two numbers and one expression
+ * @return result of calculating
+ */
     /**
      * Main method of calculating
      *
@@ -147,7 +147,7 @@ class Calculator {
             case "+":
                 result = first.add(second);
                 break;
-            case"-":
+            case "-":
                 result = first.subtract(second);
                 break;
             case "/":
@@ -256,6 +256,5 @@ class Calculator {
         }
         return i;
     }
-
-
 }
+
